@@ -40,20 +40,17 @@
         <th>Nama Penulis</th>
         <th>Hobi/Kebiasaan</th>
         <th>motivation</th>
-        <th>alamat</th>
         <th>skill</th>
         <th>Opsi</th>
       </tr>
       <?php $i = 1; ?>
-      <?php foreach ($motivasi as $data) : ?>
+      <?php foreach ($test as $data) : ?>
         <tr>
           <td><?= $i++; ?></td>
           <td><?= $data['Nama']; ?></td>
           <td><?= $data['Hobi']; ?></td>
           <td><?= $data['Motivasi']; ?></td>
-          <td></td>
-          <td>
-          </td>
+          <td><?= $data['Nama_skil']; ?></td>
           <td>
             <a href="/ubah<?= $data['id']; ?>" id="edit">EDIT</a>
             <a href="/hapus<?= $data['id']; ?>" id="hapus" onclick="return confirm('yakin mau di hapus?,motivasimu bagus lohh');">HAPUS</a>

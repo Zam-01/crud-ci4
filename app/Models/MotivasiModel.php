@@ -15,7 +15,7 @@ class MotivasiModel extends Model
   protected $returnType     = 'array';
   protected $useSoftDeletes = true;
 
-  protected $allowedFields = ['Nama', 'Hobi', 'Motivasi'];
+  protected $allowedFields = ['Nama', 'Hobi', 'Motivasi', 'id_skil'];
 
   protected bool $allowEmptyInserts = true;
   protected bool $updateOnlyChanged = true;
@@ -26,6 +26,7 @@ class MotivasiModel extends Model
   protected $createdField  = 'created_at';
   protected $updatedField  = 'updated_at';
   protected $deletedField  = 'deleted_at';
+
 
   // // Validation
   // protected $validationRules      = [];

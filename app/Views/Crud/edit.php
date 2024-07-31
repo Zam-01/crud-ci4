@@ -72,6 +72,15 @@
       border-radius: 15px;
     }
 
+    #id_skil {
+      width: 400px;
+      margin: 3px 20px 10px 400px;
+      text-align: center;
+      font-family: inherit;
+      font-size: medium;
+      color: #004a9f;
+    }
+
     .input #Ubah {
       width: 8rem;
       height: 3vmax;
@@ -140,6 +149,11 @@
         echo $isi['Motivasi'];
         ?>
       </textarea>
+      <select id="id_skil" name="id_skil" placeholder="pilih satu" required>
+        <?php foreach ($skil as $data) : ?>
+          <option value="<?= $data['id_skil']; ?>"><?= $data['Nama_skil']; ?></option>
+        <?php endforeach;  ?>
+      </select>
       <br>
       <a href="/Crud/data" id="back"> Kembali </a>
       <input type="submit" value="Ubah" id="Ubah">

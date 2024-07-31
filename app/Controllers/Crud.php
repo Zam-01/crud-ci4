@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Model;
 use App\Models\MotivasiModel;
-use App\Models\JoinModel;
+use App\Models\SkilModel;
 
 class Crud extends BaseController
 {
@@ -25,12 +25,11 @@ class Crud extends BaseController
   public function data()
   {
     $model = new MotivasiModel();
-    //$isi = $join->getData();
-    $isi = $model->findAll();
-    $data = [
-      'judul' => 'Webprograming | Zam.Dev',
-      'motivasi' => $isi
-    ];
+    $data['test'] = $model
+      ->select('*')
+      ->join('skill', 'skill.id_skil = test.id_skil')
+      ->findAll();
+    $data['judul'] = 'Webprograming | Zam.Dev';
     return view('Crud/data', $data);
   }
   public function contac()
@@ -43,17 +42,25 @@ class Crud extends BaseController
 
   public function login()
   {
-    return view('Crud/register');
+    $join = new SkilModel();
+    $data['join'] =
+      $join->findAll();
+    return view('Crud/register', $data);
   }
   // insert data 
   public function save()
   {
     $model = new MotivasiModel();
+    // $join = new SkilModel();
     $model->save([
       'Nama' => $this->request->getVar('Nama'),
       'Hobi' => $this->request->getVar('Hobi'),
       'Motivasi' => $this->request->getVar('Motivasi'),
+      'id_skil'  => $this->request->getVar('id_skil')
     ]);
+    // $join->save([
+    // 'id_skil' => $this->request->getVar('id_skil')
+    //]);
     //kirim pesan jika data berhasil ditambah
     session()->setFlashdata('pesan', 'WAW ,MOTIVASIMU KEREN ');
     return redirect()->to('/Crud/data');
@@ -63,7 +70,6 @@ class Crud extends BaseController
   public function hapus($id)
   {
     $model = new MotivasiModel();
-
     $hapus = $model->delete($id);
     if ($hapus) {
       session()->setFlashdata('pesan', 'Data berhasil di hapus');
@@ -76,10 +82,9 @@ class Crud extends BaseController
   public function edit($id)
   {
     $model = new MotivasiModel();
+    $skil = new SkilModel();
+    $data['skil'] = $skil->findAll();
     $data['isi'] = $model->find($id);
-    // $data = [
-    //   'hasil' => $model->__get($id)
-    // ];
     return view('Crud/edit', $data);
   }
   //update
@@ -91,6 +96,7 @@ class Crud extends BaseController
       'Nama' => $this->request->getVar('Nama'),
       'Hobi' => $this->request->getVar('Hobi'),
       'Motivasi' => $this->request->getVar('Motivasi'),
+      'id_skil'  => $this->request->getVar('id_skil')
     ]);
     //kirim pesan jika data berhasil ditambah
     session()->setFlashdata('pesan', 'MOTIVASIMU BERHASIL DI UBAH ');

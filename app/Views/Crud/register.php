@@ -72,6 +72,15 @@
       border-radius: 15px;
     }
 
+    #id_skil {
+      width: 400px;
+      margin: 3px 20px 10px 400px;
+      text-align: center;
+      font-family: inherit;
+      font-size: medium;
+      color: #004a9f;
+    }
+
     .input #kirim {
       width: 8rem;
       height: 3vmax;
@@ -107,8 +116,10 @@
       border-bottom-left-radius: 15px;
       cursor: pointer;
       background-color: aqua;
-      transform: translateY(-10px);
+      transform: translateY(25px);
     }
+
+
 
     #Nama,
     #Hobi,
@@ -137,6 +148,11 @@
       <label for=""></label>
       <textarea name="Motivasi" id="Motivasi" placeholder="Tulis Motivasi Dengan Versi Mu Sendiri " required autofocus></textarea>
       <br>
+      <select id="id_skil" name="id_skil" placeholder="pilih satu" required>
+        <?php foreach ($join as $data) : ?>>
+        <option value="<?= $data['id_skil']; ?>"><?= $data['Nama_skil']; ?></option>
+      <?php endforeach ?>
+      </select>
       <a href="/Crud/data" id="back"> Kembali </a>
       <input type="submit" value="kirim" id="kirim">
       <!-- <input type="submit" value="Kirim">Kirim</input> -->
