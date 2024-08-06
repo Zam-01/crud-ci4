@@ -358,7 +358,61 @@
       outline: none;
       background-color: #031825;
       font-size: 1em;
+    }
 
+    ::placeholder {
+      text-transform: capitalize;
+      color: gray;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 1em;
+    }
+
+    #cari {
+      width: 60vh;
+      position: absolute;
+      right: 15%;
+      margin-bottom: 0px;
+      box-sizing: border-box;
+      margin-bottom: 30vh;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #cari input {
+      left: 40%;
+      margin: 20px;
+      padding: 5px 5px;
+      width: 60vh;
+      height: 35px;
+      transform: translateY(-17px);
+      border: 1px solid black;
+      outline: 0px;
+      border-radius: 10px;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 1.1em;
+      color: #000fff;
+    }
+
+    #cari input:focus {
+      box-shadow: 0px 0px 5px 0.5px rgb(79, 200, 248),
+        0px 0px 10px 1px rgb(79, 200, 248), 0px 0px 15px 1.5px rgb(79, 200, 248);
+    }
+
+    #cari button {
+      text-align: center;
+      margin: 20px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 1em;
+      width: 100px;
+      height: 34px;
+      transform: translateX(-5px) translateY(-15px);
+      color: #000fff;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      left: 40%;
+      box-shadow: 0px 0px 5px 0.5px rgb(79, 200, 248),
+        0px 0px 10px 1px rgb(79, 200, 248), 0px 0px 15px 1.5px rgb(79, 200, 248);
     }
 
     #about {

@@ -34,6 +34,13 @@
     <?php
     endif;
     ?>
+    <form action="" method="post" id="cari">
+      <input type="text" name="keyword" id="keyword" autofocus required placeholder="cari data anda disini">
+      <button type="submit" name="submit"> Cari </button>
+    </form>
+    <br>
+    <br>
+    <br>
     <table>
       <tr>
         <th>No</th>

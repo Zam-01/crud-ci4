@@ -11,31 +11,45 @@ class Crud extends BaseController
   public function home()
   {
     $data = [
-      'judul' => 'Webprograming | Zam.Dev'
+      'judul' => 'Home |Webprograming | Zam.Dev'
     ];
     return view('Crud/home', $data);
   }
   public function about()
   {
     $data = [
-      'judul' => 'Webprograming | Zam.Dev'
+      'judul' => ' Aboute |Webprograming | Zam.Dev'
     ];
     return view('Crud/about', $data);
   }
   public function data()
   {
+    $keyword = $this->request->getPost('keyword');
     $model = new MotivasiModel();
-    $data['test'] = $model
-      ->select('*')
-      ->join('skill', 'skill.id_skil = test.id_skil')
-      ->findAll();
-    $data['judul'] = 'Webprograming | Zam.Dev';
+    $data['judul'] = 'Data |Webprograming | Zam.Dev';
+    if ($keyword) {
+      $data['test'] = $model
+        ->join('skill', 'skill.id_skil = test.id_skil')
+        ->cari($keyword);
+    } else {
+      $data['test'] = $model
+        ->select('*')
+        ->join('skill', 'skill.id_skil = test.id_skil')
+        ->findAll();
+    }
+
+
+
     return view('Crud/data', $data);
+    // if ($keyword) {
+    //   $data = $model->find('keyword');
+    // } else {
+    // }
   }
   public function contac()
   {
     $data = [
-      'judul' => 'Webprograming | Zam.Dev'
+      'judul' => 'Contac |Webprograming | Zam.Dev'
     ];
     return view('Crud/contac', $data);
   }
@@ -43,6 +57,7 @@ class Crud extends BaseController
   public function login()
   {
     $join = new SkilModel();
+    $data['judul'] = "Form Data";
     $data['join'] =
       $join->findAll();
     return view('Crud/register', $data);

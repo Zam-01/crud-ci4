@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Database\BaseBuilder;
 
 class MotivasiModel extends Model
 {
@@ -27,6 +28,11 @@ class MotivasiModel extends Model
   protected $updatedField  = 'updated_at';
   protected $deletedField  = 'deleted_at';
 
+
+  public function cari($keyword)
+  {
+    return $this->like('Nama',  $keyword)->findAll();
+  }
 
   // // Validation
   // protected $validationRules      = [];
